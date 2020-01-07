@@ -4,6 +4,13 @@
 
 [1]: https://www.npmjs.com/package/nodejs-storage?activeTab=versions
 
+### [4.2.1](https://www.github.com/googleapis/nodejs-storage/compare/v4.2.0...v4.2.1) (2020-01-07)
+
+
+### Bug Fixes
+
+* do not modify constructor options ([#974](https://www.github.com/googleapis/nodejs-storage/issues/974)) ([4969148](https://www.github.com/googleapis/nodejs-storage/commit/4969148f5e114d86aa4928109f099ec15d56fda5))
+
 ## [4.2.0](https://www.github.com/googleapis/nodejs-storage/compare/v4.1.3...v4.2.0) (2020-01-02)
 
 
