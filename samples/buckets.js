@@ -138,37 +138,6 @@ async function disableUniformBucketLevelAccess(bucketName) {
   // [END storage_disable_uniform_bucket_level_access]
 }
 
-async function getUniformBucketLevelAccess(bucketName) {
-  // [START storage_get_uniform_bucket_level_access]
-  // Imports the Google Cloud client library
-  const {Storage} = require('@google-cloud/storage');
-
-  // Creates a client
-  const storage = new Storage();
-
-  /**
-   * TODO(developer): Uncomment the following lines before running the sample.
-   */
-  // const bucketName = 'Name of a bucket, e.g. my-bucket';
-
-  // Gets Bucket Metadata and checks if uniform bucket-level access is enabled.
-  const [metadata] = await storage.bucket(bucketName).getMetadata();
-
-  if (metadata.iamConfiguration) {
-    const uniformBucketLevelAccess =
-      metadata.iamConfiguration.uniformBucketLevelAccess;
-    console.log(`Uniform bucket-level access is enabled for ${bucketName}.`);
-    console.log(
-      `Bucket will be locked on ${uniformBucketLevelAccess.lockedTime}.`
-    );
-  } else {
-    console.log(
-      `Uniform bucket-level access is not enabled for ${bucketName}.`
-    );
-  }
-  // [END storage_get_uniform_bucket_level_access]
-}
-
 require(`yargs`)
   .demand(1)
   .command(`list`, `Lists all buckets in the current project.`, {}, listBuckets)
@@ -189,12 +158,6 @@ require(`yargs`)
     `Disables uniform bucket-level access for the specified bucket.`,
     {},
     opts => disableUniformBucketLevelAccess(opts.bucket)
-  )
-  .command(
-    `get-uniform-bucket-level-access <bucket>`,
-    `Get uniform bucket-level access metadata for the specified bucket.`,
-    {},
-    opts => getUniformBucketLevelAccess(opts.bucket)
   )
   .command(`delete <bucket>`, `Deletes a bucket.`, {}, opts =>
     deleteBucket(opts.bucket)
